@@ -40,7 +40,23 @@ public class MainActivity extends AppCompatActivity {
     private void enviarMensagem(){
 
         String numero = inputTextNumber.getText().toString();
+
+        if(numero.isEmpty()){
+            inputTextNumber.setError("Favor inserir o número. Exemplo: 55 + DDD + Numero");
+            return;
+        }
+
+        if ((numero.contains("55") != false) && (numero.length() <= 10)){
+            numero = "55" + numero;
+        }
+
         String mensagem = inputTextMessage.getText().toString();
+
+        if(mensagem.isEmpty()){
+            inputTextMessage.setError("Favor inserir uma mensagem");
+            return;
+        }
+
         mensagem = mensagem.replace( " ", "%20" );
         String url = numero + "?text=" + mensagem;
 
